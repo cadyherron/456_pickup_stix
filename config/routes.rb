@@ -3,19 +3,16 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
-
-  resources :artists, only: [:index, :show] do
-    resources :bookmarks, defaults: { bookmarkable: "Artist" }
-  end
+  resources :bookmarks, only: [:create, :destroy]
 
 
-  resources :songs do
-    resources :bookmarks, defaults: { bookmarkable: "Song" }
-  end
+  resources :artists, only: [:index, :show]
 
-  resources :playlists do
-    resources :bookmarks, defaults: { bookmarkable: "Playlist" }
-  end
+  resources :songs
+
+  resources :playlist_selections, only: [:create, :destroy]
+
+  resources :playlists
 
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "User has been created"
       sign_in(@user)
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:error] = "User was not created"
       render :new
@@ -55,11 +55,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = "User was deleted"
-      sign_out(@user)
+      sign_out
+      redirect_to root_path
     else
       flash[:error] = "User was not deleted"
+      redirect_to :back
     end
-    redirect_to users_path
   end
 
 

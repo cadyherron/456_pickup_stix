@@ -20,6 +20,7 @@
   <% @artist.songs.each do |song| %>
 
     <li><%= link_to song.name, song_path(song) %></li>
+
     <li>Dropdown list of current user's playlists</li>
     <li>Button for "Add to playlist"</li>
     <li>Button for "Bookmark" that checks if the song is already bookmarked, switches to "Unbookmark"</li>
