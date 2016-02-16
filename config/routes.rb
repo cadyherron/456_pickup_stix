@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+
+  root 'users#new'
+
+
   resources :artists, only: [:index, :show] do
     resources :bookmarks, defaults: { bookmarkable: "Artist" }
   end
@@ -9,7 +13,9 @@ Rails.application.routes.draw do
     resources :bookmarks, defaults: { bookmarkable: "Song" }
   end
 
-
+  resource :session, :only => [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
 
 
 

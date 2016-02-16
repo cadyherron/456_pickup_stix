@@ -64,7 +64,8 @@ users = [
   {
     :first_name => 'foo',
     :last_name => 'bar',
-    :email => 'foo@bar.com'
+    :email => 'foo@bar.com',
+    :password => '$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO'
   }
 ]
 (MULTIPLIER * NUM_USERS).times do
