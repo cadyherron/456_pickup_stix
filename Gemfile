@@ -62,7 +62,12 @@ end
 
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
+  gem 'better_errors'
 end
+
+gem 'binding_of_caller'
+
+gem 'bootstrap-sass'
 
