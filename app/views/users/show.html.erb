@@ -1,0 +1,33 @@
+
+
+<br/>Artist Bookmarks:
+<ul>
+<% find_artists_from_bookmarks(@user.bookmarks).each do |bookmark| %>
+  <li>
+    <%= link_to bookmark.bookmarkable.name, artist_bookmark_path(bookmark.bookmarkable.id, bookmark.id)  %>
+    <%= button_to "Remove Bookmark", artist_bookmark_path(bookmark.bookmarkable.id, bookmark.id), method: :delete , class: "btn btn-sm"%>
+  </li>
+<% end %>
+</ul>
+
+
+<br/>Song Bookmarks:
+<ul>
+<% find_songs_from_bookmarks(@user.bookmarks).each do |bookmark| %>
+  <li>
+    <%= link_to bookmark.bookmarkable.name, song_bookmark_path(bookmark.bookmarkable.id, bookmark.id)  %>
+    <%= button_to "Remove Bookmark", song_bookmark_path(bookmark.bookmarkable.id, bookmark.id), method: :delete , class: "btn btn-sm"%>
+  </li>
+<% end %>
+</ul>
+
+
+<br/>Playlist Bookmarks:
+<ul>
+<% find_playlists_from_bookmarks(@user.bookmarks).each do |bookmark| %>
+  <li>
+    <%= link_to bookmark.bookmarkable.name, playlist_bookmark_path(bookmark.bookmarkable.id, bookmark.id)  %>
+    <%= button_to "Remove Bookmark", playlist_bookmark_path(bookmark.bookmarkable.id, bookmark.id), method: :delete , class: "btn btn-sm"%>
+  </li>
+<% end %>
+</ul>
