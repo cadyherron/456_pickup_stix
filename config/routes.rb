@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :artists, only: [:index, :show]
+  resources :artists, only: [:index, :show] do
+    resources :bookmarks, defaults: { bookmarkable: "Artist" }
+  end
 
 
-
-
+  resources :songs do
+    resources :bookmarks, defaults: { bookmarkable: "Song" }
+  end
 
 
 

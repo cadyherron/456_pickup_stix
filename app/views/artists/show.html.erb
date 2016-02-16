@@ -1,0 +1,28 @@
+
+<!-- - the SHOW page displays a list of all of that artist's songs
+- **when the user is logged in:**
+    - each song:
+        - has a dropdown list next to it with all of the current user's playlists
+        - has a button `Add to playlist` next to it that will add that song to the selected playlist when clicked
+        - **NOTE: you are not to take into account whether or not the song may already exist in the playlist!**
+        - has a link to that song's SHOW page
+    - there is a button `Bookmark` that
+        - if not already bookmarked, when clicked will add this artist to the current user's bookmarks
+        - if already bookmarked it should say `Unbookmark` and allow the user to remove the bookmark -->
+        
+<!-- TODO: wire up dropdown list, add to playlist, link to song's SHOW page, Bookmark button -->
+
+<h3><%= @artist.name %></h3>
+
+<h5>Songs:</h5>
+
+<ul>
+  <% @artist.songs.each do |song| %>
+
+    <li><%= link_to song.name, song_path(song) %></li>
+    <li>Dropdown list of current user's playlists</li>
+    <li>Button for "Add to playlist"</li>
+    <li>Button for "Bookmark" that checks if the song is already bookmarked, switches to "Unbookmark"</li>
+
+  <% end %>
+</ul>
