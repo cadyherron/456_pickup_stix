@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root 'users#new'
+  root 'sessions#new'
 
 
   resources :artists, only: [:index, :show] do
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
 
 
-
+  resources :users
 
 
 

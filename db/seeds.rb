@@ -65,7 +65,7 @@ users = [
     :first_name => 'foo',
     :last_name => 'bar',
     :email => 'foo@bar.com',
-    :password => '$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO'
+    :password => 'password'
   }
 ]
 (MULTIPLIER * NUM_USERS).times do
@@ -76,7 +76,8 @@ users = [
   users << {
     :first_name => first_name,
     :last_name => last_name,
-    :email => email
+    :email => email,
+    :password => 'password'
   }
 end
 User.create(users)
@@ -170,30 +171,30 @@ bookmarks = Bookmark.all
 # Followings
 # ----------------------------------------
 
-puts 'Creating Followings'
+# puts 'Creating Followings'
 
-followings = []
-already_followed_ids = []
-(MULTIPLIER * NUM_FOLLOWINGS).times do
-  if already_followed_ids.empty?
-    followed = users.sample
-  else
-    followed = users.where('id NOT IN (?)', already_followed_ids).sample
-  end
+# followings = []
+# already_followed_ids = []
+# (MULTIPLIER * NUM_FOLLOWINGS).times do
+#   if already_followed_ids.empty?
+#     followed = users.sample
+#   else
+#     followed = users.where('id NOT IN (?)', already_followed_ids).sample
+#   end
 
-  possible_followers = users.where('id != ?', followed.id).to_a
-  already_followed_ids << followed.id
+#   possible_followers = users.where('id != ?', followed.id).to_a
+#   already_followed_ids << followed.id
   
-  NUM_FOLLOWINGS.times do
-    follower = possible_followers.pop
-    followings << {
-      :follower_id => follower.id,
-      :followed_id => followed.id
-    }
-  end
-end
-Following.create(followings)
-followings = Following.all
+#   NUM_FOLLOWINGS.times do
+#     follower = possible_followers.pop
+#     followings << {
+#       :follower_id => follower.id,
+#       :followed_id => followed.id
+#     }
+#   end
+# end
+# Following.create(followings)
+# followings = Following.all
 
 
 # ----------------------------------------

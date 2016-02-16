@@ -14,7 +14,20 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body data-no-turbolink>
+
+    <% if current_user %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+    <% end %>
+
+    <% flash.each do |type, message| %>
+      <div class="alert alert-<%=type%>">
+        <div>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= type.titleize %>! <%= message %></strong>
+        </div>
+        </div>
+    <% end %>   
           
     <%= yield %>
 
